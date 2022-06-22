@@ -1,0 +1,3 @@
+# cadwork math
+
+::: cwmath.simple

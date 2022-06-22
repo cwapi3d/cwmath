@@ -1,17 +1,10 @@
-# Welcome to MkDocs
+# CWMATH
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Cwmath is an open source project in which Python functions are developed and made available by the community, for the community. 
 
-## Commands
+![Backup Text](img/python.png "cadwork API")
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Agreement
 
-## Project layout
+By contributing code to this repo, you automatically agree that cadwork owns and may distribute the code.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
