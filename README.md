@@ -40,6 +40,7 @@ Before start contributing, please check [contributing agreement](CONTRIBUTING.md
 # Style guide
 
 Please follow the style guide below when adding functions. 
+[Guidelines](GUIDELINES.md)
 
 ```python
 
