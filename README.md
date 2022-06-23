@@ -20,7 +20,7 @@ Install with pip:
 ## Contributing
 
 Contributions are always welcome!
-Before start contributing, please check [contributing agreement](CONTRIBUTING)
+Before start contributing, please check [contributing agreement](CONTRIBUTING.md)
   
 ## Roadmap
 
@@ -40,6 +40,7 @@ Before start contributing, please check [contributing agreement](CONTRIBUTING)
 # Style guide
 
 Please follow the style guide below when adding functions. 
+[Guidelines](GUIDELINES.md)
 
 ```python
 
