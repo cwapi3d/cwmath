@@ -20,6 +20,7 @@ Install with pip:
 ## Contributing
 
 Contributions are always welcome!
+Before start contributing, please check [contributing agreement](CONTRIBUTING)
   
 ## Roadmap
 
