@@ -1,4 +1,4 @@
-# Contributing to OpenSearch
+# Contributing to cwmath
 
 Cwmath is a community project that is built and maintained by people just like **you**. We're glad you're interested in helping out. There are several different ways you can do it, but before we talk about that, let's talk about how to get started.
 
