@@ -34,10 +34,12 @@ theme:
     - navigation.instant
 nav:
   - Cadwork math: index.md
+  - Contribution: Documentation/contributing.md
   - Geometry: geometry.md
+  - Style Guide: style_guide.md
   - Documentation:
     - Functions: Documentation/functions.md
-  - Style Guide: style_guide.md
+  
 
 markdown_extensions:
   - attr_list  
@@ -45,8 +47,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.highlight:
-      linenums: true
-      linenums_style: pymdownx-inline
+      #linenums: true
+      #linenums_style: pymdownx-inline
   - pymdownx.superfences:
   - footnotes:
       SEPARATOR: _footnote_
@@ -69,6 +71,8 @@ plugins:
           setup_commands:
                       - import sys
                       - sys.path.append('src/')
+                      # navigate to cwapi3d_guide src files
+                      - sys.path.append('../cwapi3d_guide/src/')
           rendering:
             show_source: false                 
 extra:
