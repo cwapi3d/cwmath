@@ -1,3 +1,3 @@
 # cadwork math
 
-::: cwmath.cwmath
+::: src.cwmath.cwmath

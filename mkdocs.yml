@@ -17,12 +17,13 @@ theme:
     palette:
       - media: "(prefers-color-scheme: light)"
         scheme: default
+        primary:  indigo
         toggle:
           name: Switch to light mode
           icon: material/weather-sunny
       - media: "(prefers-color-scheme: dark)"
         scheme: slate
-        primary: grey
+        # primary: grey
         accent: blue
         toggle:
           name: Switch to dark mode
@@ -70,9 +71,11 @@ plugins:
         python:
           setup_commands:
                       - import sys
-                      - sys.path.append('src/')
+                      # - from cadwork import point_3d
+                      # - sys.path.append('src/')
+                      # - import cwmath
                       # navigate to cwapi3d_guide src files
-                      - sys.path.append('../cwapi3d_guide/src/')
+                      # - sys.path.append('../cwapi3d_guide/src/')
           rendering:
             show_source: false                 
 extra:

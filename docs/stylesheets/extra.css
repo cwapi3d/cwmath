@@ -1,22 +1,27 @@
 :root {
 
     /* Primary color shades */
-    --md-primary-fg-color: #10069f;
+    /* --md-accent-fg-color: #10069f;
+    --md-primary-fg-color: #10069f; */
     --md-primary-fg-color--light: #10069f;
     --md-primary-fg-color--dark: #10069f;
     --md-primary-bg-color: hsla(0, 0%, 100%, 1);
     --md-primary-bg-color--light: hsla(0, 0%, 100%, 0.7);
-    --md-text-link-color: rgb(21, 47, 196);
+    --md-text-link-color: rgb(196, 41, 21);
 
     /* Accent color shades */
-    --md-accent-fg-color: rgb(81, 151, 231);
+    /* --md-accent-fg-color: rgb(81, 151, 231); */
     --md-accent-fg-color--transparent: hsla(189, 100%, 37%, 0.1);
     --md-accent-bg-color: rgba(255, 255, 255, 0.329);
     --md-accent-bg-color--light: hsla(0, 0%, 100%, 0.7);
   }
+
+  :root > * {
+    --md-header-bg-color: #10069f;
+  }
   
   :root > * {
-  
+    
     /* Footer */
     --md-footer-bg-color: #10069f;
     --md-footer-bg-color--dark: hsla(0, 0%, 0%, 0.32);
@@ -29,6 +34,7 @@
     --md-code-hl-keyword-color: #2c55ce;
     --md-code-hl-operator-color: #9fa3ae;
     --md-code-hl-variable-color: #5375d3;
+    
   }
 
   [data-md-color-scheme="slate"] {
