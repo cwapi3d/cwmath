@@ -71,7 +71,7 @@ plugins:
             show_source: false                 
 extra:
   generator: false
-  copyright: Copyright &copy; 2021 cadwork
+  copyright: Copyright &copy; 2021-2022 cadwork
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/cwapi3d/cwmath
