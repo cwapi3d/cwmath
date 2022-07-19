@@ -1,3 +1,6 @@
 # cadwork math
 
-::: cwmath.cwmath
+::: src.cwmath.cwmath
+    options:
+      show_source: true
+      

@@ -4,7 +4,7 @@ repo_url: https://github.com/cwapi3d/cwmath
 edit_uri: ""
 
 # Copyright
-copyright: Copyright &copy; 2021 cadwork 
+copyright: Copyright &copy; 2021-2022 cadwork 
 
 site_name: Cadwork Math Utilities
 site_url: https://python.cadwork.dev/
@@ -30,7 +30,6 @@ theme:
     features:
     - search.suggest
     - search.highlight
-    # - navigation.tabs
     - navigation.instant
 nav:
   - Cadwork math: index.md
@@ -47,8 +46,6 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.highlight:
-      #linenums: true
-      #linenums_style: pymdownx-inline
   - pymdownx.superfences:
   - footnotes:
       SEPARATOR: _footnote_
@@ -70,9 +67,6 @@ plugins:
         python:
           setup_commands:
                       - import sys
-                      - sys.path.append('src/')
-                      # navigate to cwapi3d_guide src files
-                      - sys.path.append('../cwapi3d_guide/src/')
           rendering:
             show_source: false                 
 extra:
