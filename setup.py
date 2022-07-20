@@ -5,12 +5,6 @@ here = pathlib.Path(__file__).parent.resolve()
 
 long_description = (here / 'README.md').read_text(encoding='utf-8')
 
-with open("requirements.txt") as f:
-    install_requires = [
-        line for line in f.read().split("\n")
-        if line and not line.startswith("#")
-    ]
-
 setup(
     name='cwmath',
     version='0.0.2',
@@ -34,5 +28,4 @@ setup(
     packages=find_packages(where="src"),
     package_dir={'': 'src'},
     include_package_data=True,
-    install_requires = install_requires,
 )
