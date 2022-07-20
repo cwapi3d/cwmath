@@ -7,7 +7,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='cwmath',
-    version='0.0.2',
+    version='0.0.3',
     author='Cadwork',
     author_email='it@cadwork.ca',
     description='Cadwork Math Utilities',
@@ -27,8 +27,5 @@ setup(
     python_requires='>=3.9, <4',
     packages=find_packages(where="src"),
     package_dir={'': 'src'},
-    package_data={
-        '': ['*.pyi'],
-    },
     include_package_data=True,
 )

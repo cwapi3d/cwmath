@@ -54,7 +54,6 @@ By making a contribution to this project, I certify that:
     this project or the open source license(s) involved.
 ```
 
-
 We require that every contribution to cwmath is signed with a Developer Certificate of Origin. Additionally, please use your real name. We do not accept anonymous contributors nor those utilizing pseudonyms.
 
 Each commit must include a DCO which looks like this

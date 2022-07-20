@@ -1,44 +1,30 @@
-# Repository
+site_name: Cadwork Math Utilities Documentation
+
 repo_name: cwapi3d/cwmath
 repo_url: https://github.com/cwapi3d/cwmath
 edit_uri: ""
 
-# Copyright
-copyright: Copyright &copy; 2021-2022 cadwork 
+copyright: Copyright &copy; 2022 Cadwork
 
-site_name: Cadwork Math Utilities
 site_url: https://python.cadwork.dev/
+
 theme:
     name: material
-    nav_style: dark
     logo: cw_logo.svg 
     favicon: cw_logo.svg 
-    version: v29
-    palette:
-      - media: "(prefers-color-scheme: light)"
-        scheme: default
-        toggle:
-          name: Switch to light mode
-          icon: material/weather-sunny
-      - media: "(prefers-color-scheme: dark)"
-        scheme: slate
-        primary: grey
-        accent: blue
-        toggle:
-          name: Switch to dark mode
-          icon: material/weather-night 
+    version: V29
     features:
     - search.suggest
     - search.highlight
     - navigation.instant
+
 nav:
   - Cadwork math: index.md
-  - Contribution: Documentation/contributing.md
+  - Contribution: documentation/contributing.md
   - Geometry: geometry.md
   - Style Guide: style_guide.md
   - Documentation:
-    - Functions: Documentation/functions.md
-  
+    - Functions: documentation/functions.md
 
 markdown_extensions:
   - attr_list  
@@ -46,6 +32,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.highlight:
+      linenums: true
+      linenums_style: pymdownx-inline
   - pymdownx.superfences:
   - footnotes:
       SEPARATOR: _footnote_
@@ -56,22 +44,25 @@ markdown_extensions:
       repo_url_shorthand: true
       user: cwapi3d
       repo: cwmath
+
 extra_css:
   - stylesheets/extra.css
+
 plugins:
   - search:
-      separator: '[\s\-\.\_]+'     
+      separator: '[\s\-\.\_]+'
   - mkdocstrings:
-      default_handler: python
       handlers:
         python:
+          paths: [src]
+          options:
+            show_source: false
           setup_commands:
-                      - import sys
-          rendering:
-            show_source: false                 
+            - import sys
+            - from unittest.mock import MagicMock as mock
+            - sys.modules["cadwork"] = mock()
+
 extra:
-  generator: false
-  copyright: Copyright &copy; 2021-2022 cadwork
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/cwapi3d/cwmath
