@@ -20,7 +20,7 @@ Install with pip:
 ## Contributing
 
 Contributions are always welcome!
-Before start contributing, please check [contributing agreement](CONTRIBUTING.md)
+Before contributing, please check [contributing agreement](CONTRIBUTING.md).
   
 ## Roadmap
 
@@ -37,9 +37,9 @@ Before start contributing, please check [contributing agreement](CONTRIBUTING.md
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-# Style guide
+# Style Guide
 
-Please follow the style guide below when adding functions. 
+Please follow the style guide below when adding functions.
 [Guidelines](GUIDELINES.md)
 
 ```python
