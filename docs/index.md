@@ -1,23 +1,15 @@
-# CWMATH
+# Cadwork Math Utilities
 
-Cwmath is an open source project in which Python functions are developed and made available by the community, for the community.
-Cwmath is a subproject of the API of cadwork.
+CwMath is an open source project in which Python functions are developed and made available by the community, for the community. CwMath is a subproject of the API of cadwork.
 
-[CWAPI3D-GUIDE](https://docs.cadwork.com/projects/cwapi3dpython/en/latest/){.button-63}
-
-<br>
-
-
+[Cadwork Python Documentation](https://docs.cadwork.com/projects/cwapi3dpython/en/latest/){.button-63}
 
 ![Backup Text](img/math.jpeg "https://elink.io/p/all-about-paula-incorvati-99ec81e")
 
 ## Agreement
 
-By contributing code to this repo, you automatically agree that cadwork owns and may distribute the code.
+By contributing code to this repo you agree that cadwork may distribute the code.
 
-## Guidlines
+## Guidelines
 
-We have few rules. So please follow the coding styles we provide. :wink:
-
-[Guidlines](style_guide.md#Coding-Guidelines){.button-63}
-
+We have few [guidelines](style_guide.md#Coding-Guidelines), so please follow the coding styles we provide. :wink:

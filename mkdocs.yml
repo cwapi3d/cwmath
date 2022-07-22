@@ -1,4 +1,4 @@
-site_name: Cadwork Math Utilities Documentation
+site_name: Cadwork Math Utilities
 
 repo_name: cwapi3d/cwmath
 repo_url: https://github.com/cwapi3d/cwmath
@@ -13,17 +13,33 @@ theme:
     logo: cw_logo.svg 
     favicon: cw_logo.svg 
     version: V29
+    palette:
+    - scheme: slate
+      primary: "light-blue"
+      accent: "pink"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: "light-blue"
+      accent: "pink"
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
     features:
     - search.suggest
     - search.highlight
+    - navigation.tabs
+    - toc.integrate
 
 nav:
-  - Cadwork math: index.md
-  - Contribution: documentation/contributing.md
-  - Geometry: geometry.md
-  - Style Guide: style_guide.md
-  - Documentation:
-    - Functions: documentation/functions.md
+  - Home: index.md
+  - Getting Started:
+    - Geometry: geometry.md
+    - Contributing: contributing.md
+    - Style Guide: style_guide.md
+  - Reference:
+    - functions.md
 
 markdown_extensions:
   - attr_list  
