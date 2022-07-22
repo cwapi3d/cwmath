@@ -1,5 +1,5 @@
-# cadwork math
+# CwMath
 
-::: cwmath
+::: cwmath.cwmath
     options:
       show_source: true
