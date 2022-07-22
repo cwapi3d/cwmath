@@ -16,7 +16,6 @@ theme:
     features:
     - search.suggest
     - search.highlight
-    - navigation.instant
 
 nav:
   - Cadwork math: index.md
