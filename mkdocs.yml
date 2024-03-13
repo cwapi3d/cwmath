@@ -12,19 +12,15 @@ theme:
   logo: cw_logo.svg
   favicon: cw_logo.svg
   version: V30
-  #    palette:
-  #    - scheme: slate
-  #      primary: "light-blue"
-  #      accent: "pink"
-  #      toggle:
-  #        icon: material/brightness-4
-  #        name: Switch to light mode
-  #    - scheme: default
-  #      primary: "light-blue"
-  #      accent: "pink"
-  #      toggle:
-  #        icon: material/brightness-7
-  #        name: Switch to dark mode
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - search.suggest
     - search.highlight
@@ -44,39 +40,37 @@ nav:
       - plane3d.md
 
 markdown_extensions:
-  - md_in_html
-  - attr_list
   - admonition
-  #  - pymdownx.inlinehilite
-  - pymdownx.keys
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.gemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_alt
   - pymdownx.highlight:
       linenums: true
+  - pymdownx.keys
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - footnotes:
-  - pymdownx.emoji:
-      emoji_index: !!python/name:pymdownx.emoji.gemoji
-      emoji_generator: !!python/name:pymdownx.emoji.to_alt
 
-        #extra_css:
-        #  - stylesheets/extra.css
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - js/tablesort.js
+  - js/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
 plugins:
   - search
   - mkdocstrings
-  #      handlers:
-  #        python:
-  #          paths: [src]
-  #          options:
-  #            show_source: false
-  #          setup_commands:
-  #            - import sys
-  #            - from unittest.mock import MagicMock as mock
-  #            - sys.modules["cadwork"] = mock()
-  - privacy
 
 extra:
   social:

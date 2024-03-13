@@ -1,6 +1,6 @@
 [project]
 name = "cwmath"
-version = "0.0.6"
+version = "0.0.7"
 authors = [{ name = "Cadwork", email = "it@cadwork.ca" }]
 requires-python = ">= 3.10"
 description = 'Cadwork Math Utilities'

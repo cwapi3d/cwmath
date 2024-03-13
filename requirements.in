@@ -1,6 +1,7 @@
 build
 mkdocs
-mkdocs-material
+mkdocs-material[imaging]
 mkdocstrings[python]
+pygments
 pytest
 pytest-cov

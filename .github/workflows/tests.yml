@@ -8,13 +8,13 @@ on:
 jobs:
   run-math-tests:
     name: Run Math Tests
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-latest'
 
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.12
+          python-version: '3.12'
       - run: python -m pip install --upgrade pip
       - run: pip install pip-tools
       - run: pip-sync
