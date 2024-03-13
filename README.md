@@ -1,3 +1,5 @@
+![Logo](https://filehost.cadwork.ca/cadwork_logo.png)
+
 # Cadwork Math Utilities
 
 [![PyPI](https://img.shields.io/pypi/v/cwmath)](https://pypi.python.org/pypi/cwmath/)
@@ -73,4 +75,36 @@ do_one()
 do_two()
 do_three()
 
+```
+
+# Examples
+```python
+import cadwork
+import element_controller as ec
+import geometry_controller as gc
+
+import sys
+
+sys.path.append("...\\...\cwmath\\src")
+
+from cwmath import cwplane3d
+from cwmath import cwvector3d
+
+element_ids = ec.get_active_identifiable_element_ids()
+if len(element_ids) > 0:
+    point1 = gc.get_p1(*element_ids)
+    point2 = gc.get_p2(*element_ids)
+    yl = gc.get_yl(*element_ids)
+    plane = cwplane3d.CwPlane3d(point1,yl)
+    print(point1)
+    print(yl)
+    print(plane)
+
+    distance = plane.distance_to_point(cadwork.point_3d(0.,0.,0.))
+    print(distance)
+
+    vector1 = cwvector3d.CwVector3d.from_point_3d(point1)
+    vector2 = cwvector3d.CwVector3d.from_point_3d(point2)
+    norm =(vector2 - vector1).normalize()
+    print(norm)
 ```

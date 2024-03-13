@@ -1,5 +1,5 @@
 # CwMath
 
-::: cwmath.cwmath
+::: src.cwmath.cwexamples
     options:
       show_source: true
