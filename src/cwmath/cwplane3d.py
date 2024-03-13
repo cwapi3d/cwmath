@@ -1,18 +1,50 @@
 __author__ = 'Brunner'
 __date__ = '13.03.2024'
 
-from dataclasses import dataclass
 from math import sqrt
 from cwmath import cwvector3d
 
 
-@dataclass
 class CwPlane3d:
     """Plane class for 3D planes. """
-    coefficient_a: float
-    coefficient_b: float
-    coefficient_c: float
-    constant_d: float
+
+    def __init__(self, point_3d, normal_vector):
+        self._coefficient_a = normal_vector.x
+        self._coefficient_b = normal_vector.y
+        self._coefficient_c = normal_vector.z
+        self._constant_d = -(self._coefficient_a * point_3d.x + self._coefficient_b * point_3d.y + self._coefficient_c * point_3d.z)   
+
+    @property
+    def coefficient_a(self) -> float:
+        return self._coefficient_a
+    
+    @coefficient_a.setter
+    def coefficient_a(self, value: float) -> None:
+        self._coefficient_a = value
+
+    @property
+    def coefficient_b(self) -> float:
+        return self._coefficient_b
+    
+    @coefficient_b.setter
+    def coefficient_b(self, value: float) -> None:
+        self._coefficient_b = value
+
+    @property
+    def coefficient_c(self) -> float:
+        return self._coefficient_c
+    
+    @coefficient_c.setter
+    def coefficient_c(self, value: float) -> None:
+        self._coefficient_c = value
+
+    @property
+    def constant_d(self) -> float:
+        return self._constant_d
+    
+    @constant_d.setter
+    def constant_d(self, value: float) -> None:
+        self._constant_d = value
 
     def __call__(self, x: float, y: float, z: float) -> float:
         """ Calculate the value of the plane at a given point.
@@ -26,41 +58,41 @@ class CwPlane3d:
         Returns:
             float: value of the plane at the given point
         """
-        return self.coefficient_a * x + self.coefficient_b * y + self.coefficient_c * z + self.constant_d
+        return self._coefficient_a * x + self._coefficient_b * y + self._coefficient_c * z + self._constant_d
 
     def __str__(self) -> str:
-        return f'{self.coefficient_a}x + {self.coefficient_b}y + {self.coefficient_c}z + {self.constant_d} = 0'
+        return f'{self._coefficient_a}x + {self._coefficient_b}y + {self._coefficient_c}z + {self._constant_d} = 0'
 
     def __repr__(self) -> str:
-        return f'CwPlane3d({self.coefficient_a}, {self.coefficient_b}, {self.coefficient_c}, {self.constant_d})'
+        return f'CwPlane3d({self._coefficient_a}, {self._coefficient_b}, {self._coefficient_c}, {self._constant_d})'
 
     def __eq__(self, other: 'CwPlane3d') -> bool:
-        return abs(self.coefficient_a - other.coefficient_a) < 1e-6 and abs(
-            self.coefficient_b - other.coefficient_b) < 1e-6 and abs(
-            self.coefficient_c - other.coefficient_c) < 1e-6 and abs(
-            self.constant_d - other.constant_d) < 1e-6
+        return abs(self._coefficient_a - other._coefficient_a) < 1e-6 and abs(
+            self._coefficient_b - other._coefficient_b) < 1e-6 and abs(
+            self._coefficient_c - other._coefficient_c) < 1e-6 and abs(
+            self._constant_d - other._constant_d) < 1e-6
 
     def __ne__(self, other: 'CwPlane3d') -> bool:
         return not self.__eq__(other)
 
     def __iter__(self):
-        yield self.coefficient_a
-        yield self.coefficient_b
-        yield self.coefficient_c
-        yield self.constant_d
+        yield self._coefficient_a
+        yield self._coefficient_b
+        yield self._coefficient_c
+        yield self._constant_d
 
     def __getitem__(self, index: int) -> float:
-        return (self.coefficient_a, self.coefficient_b, self.coefficient_c, self.constant_d)[index]
+        return (self._coefficient_a, self._coefficient_b, self._coefficient_c, self._constant_d)[index]
 
     def __setitem__(self, index: int, value: float) -> None:
         if index == 0:
-            self.coefficient_a = value
+            self._coefficient_a = value
         elif index == 1:
-            self.coefficient_b = value
+            self._coefficient_b = value
         elif index == 2:
-            self.coefficient_c = value
+            self._coefficient_c = value
         elif index == 3:
-            self.constant_d = value
+            self._constant_d = value
 
     def is_parallel(self, other: 'CwPlane3d') -> bool:
         """ Check if two planes are parallel.
@@ -71,9 +103,9 @@ class CwPlane3d:
         Returns:
             True if the planes are parallel, False otherwise
         """
-        return abs(self.coefficient_a * other.coefficient_b - self.coefficient_b * other.coefficient_a) < 1e-6 and abs(
-            self.coefficient_a * other.coefficient_c - self.coefficient_c * other.coefficient_a) < 1e-6 and abs(
-            self.coefficient_b * other.coefficient_c - self.coefficient_c * other.coefficient_b) < 1e-6
+        return abs(self._coefficient_a * other._coefficient_b - self._coefficient_b * other._coefficient_a) < 1e-6 and abs(
+            self._coefficient_a * other._coefficient_c - self._coefficient_c * other._coefficient_a) < 1e-6 and abs(
+            self._coefficient_b * other._coefficient_c - self._coefficient_c * other._coefficient_b) < 1e-6
 
     def is_perpendicular(self, other: 'CwPlane3d') -> bool:
         """ Check if two planes are perpendicular.
@@ -85,7 +117,7 @@ class CwPlane3d:
             True if the planes are perpendicular, False otherwise
         """
         return abs(
-            self.coefficient_a * other.coefficient_a + self.coefficient_b * other.coefficient_b + self.coefficient_c * other.coefficient_c) < 1e-6
+            self._coefficient_a * other._coefficient_a + self._coefficient_b * other._coefficient_b + self._coefficient_c * other._coefficient_c) < 1e-6
 
     def is_coplanar(self, other: 'CwPlane3d') -> bool:
         """ Check if two planes are coplanar.
@@ -96,9 +128,16 @@ class CwPlane3d:
         Returns:
             True if the planes are coplanar, False otherwise
         """
-        return self.coefficient_a / other.coefficient_a \
-                == self.coefficient_b / other.coefficient_b \
-                == self.coefficient_c / other.coefficient_c
+        if other._coefficient_a == 0:
+            return self._coefficient_a == 0
+        if other._coefficient_b == 0:
+            return self._coefficient_b == 0
+        if other._coefficient_c == 0:
+            return self._coefficient_c == 0
+
+        return self._coefficient_a / other._coefficient_a \
+                == self._coefficient_b / other._coefficient_b \
+                == self._coefficient_c / other._coefficient_c
 
     def is_point_on_plane(self, point: 'cwvector3d.CwVector3d') -> bool:
         """ Check if a point is on the plane.
@@ -110,7 +149,7 @@ class CwPlane3d:
             True if the point is on the plane, False otherwise
         """
         return abs(
-            self.coefficient_a * point.x + self.coefficient_b * point.y + self.coefficient_c * point.z + self.constant_d) < 1e-6
+            self._coefficient_a * point.x + self._coefficient_b * point.y + self._coefficient_c * point.z + self._constant_d) < 1e-6
 
     def distance_to_point(self, point: 'cwvector3d.CwVector3d') -> float:
         """ Calculate the distance from a point to the plane.
@@ -126,8 +165,8 @@ class CwPlane3d:
         Returns:
             distance from the point to the plane
         """
-        numerator = abs(self.coefficient_a * point.x + self.coefficient_b * point.y + self.coefficient_c * point.z + self.constant_d)
-        denominator = sqrt(self.coefficient_a**2 + self.coefficient_b**2 + self.coefficient_c**2)
+        numerator = abs(self._coefficient_a * point.x + self._coefficient_b * point.y + self._coefficient_c * point.z + self._constant_d)
+        denominator = sqrt(self._coefficient_a**2 + self._coefficient_b**2 + self._coefficient_c**2)
         return numerator / denominator
 
     def distance_to_plane(self, other: 'CwPlane3d') -> float:
@@ -139,5 +178,5 @@ class CwPlane3d:
         Returns:
             distance from the plane to the other plane
         """
-        return abs(self.constant_d - other.constant_d) / sqrt(
-            self.coefficient_a ** 2 + self.coefficient_b ** 2 + self.coefficient_c ** 2)
+        return abs(self._constant_d - other._constant_d) / sqrt(
+            self._coefficient_a ** 2 + self._coefficient_b ** 2 + self._coefficient_c ** 2)
