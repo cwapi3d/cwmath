@@ -3,8 +3,8 @@ __date__ = '13.03.2024'
 
 from dataclasses import dataclass
 from math import sqrt
+from cwmath import cwvector3d
 
-from cwvector3d import CwVector3d
 
 @dataclass
 class CwPlane3d:
@@ -15,39 +15,53 @@ class CwPlane3d:
     constant_d: float
 
     def __call__(self, x: float, y: float, z: float) -> float:
-        return self.a * x + self.b * y + self.c * z + self.d
+        """ Calculate the value of the plane at a given point.
+
+        Args:
+            x: x-coordinate of the point
+            y: y-coordinate of the point
+            z: z-coordinate of the point
+
+
+        Returns:
+            float: value of the plane at the given point
+        """
+        return self.coefficient_a * x + self.coefficient_b * y + self.coefficient_c * z + self.constant_d
 
     def __str__(self) -> str:
-        return f'{self.a}x + {self.b}y + {self.c}z + {self.d} = 0'
+        return f'{self.coefficient_a}x + {self.coefficient_b}y + {self.coefficient_c}z + {self.constant_d} = 0'
 
     def __repr__(self) -> str:
-        return f'CwPlane3d({self.a}, {self.b}, {self.c}, {self.d})'
-    
+        return f'CwPlane3d({self.coefficient_a}, {self.coefficient_b}, {self.coefficient_c}, {self.constant_d})'
+
     def __eq__(self, other: 'CwPlane3d') -> bool:
-        return abs(self.a - other.a) < 1e-6 and abs(self.b - other.b) < 1e-6 and abs(self.c - other.c) < 1e-6 and abs(self.d - other.d) < 1e-6
-    
+        return abs(self.coefficient_a - other.coefficient_a) < 1e-6 and abs(
+            self.coefficient_b - other.coefficient_b) < 1e-6 and abs(
+            self.coefficient_c - other.coefficient_c) < 1e-6 and abs(
+            self.constant_d - other.constant_d) < 1e-6
+
     def __ne__(self, other: 'CwPlane3d') -> bool:
         return not self.__eq__(other)
-    
+
     def __iter__(self):
-        yield self.a
-        yield self.b
-        yield self.c
-        yield self.d
+        yield self.coefficient_a
+        yield self.coefficient_b
+        yield self.coefficient_c
+        yield self.constant_d
 
     def __getitem__(self, index: int) -> float:
-        return (self.a, self.b, self.c, self.d)[index]
-    
+        return (self.coefficient_a, self.coefficient_b, self.coefficient_c, self.constant_d)[index]
+
     def __setitem__(self, index: int, value: float) -> None:
         if index == 0:
-            self.a = value
+            self.coefficient_a = value
         elif index == 1:
-            self.b = value
+            self.coefficient_b = value
         elif index == 2:
-            self.c = value
+            self.coefficient_c = value
         elif index == 3:
-            self.d = value
-    
+            self.constant_d = value
+
     def is_parallel(self, other: 'CwPlane3d') -> bool:
         """ Check if two planes are parallel.
 
@@ -57,8 +71,10 @@ class CwPlane3d:
         Returns:
             True if the planes are parallel, False otherwise
         """
-        return abs(self.a * other.b - self.b * other.a) < 1e-6 and abs(self.a * other.c - self.c * other.a) < 1e-6 and abs(self.b * other.c - self.c * other.b) < 1e-6
-    
+        return abs(self.coefficient_a * other.coefficient_b - self.coefficient_b * other.coefficient_a) < 1e-6 and abs(
+            self.coefficient_a * other.coefficient_c - self.coefficient_c * other.coefficient_a) < 1e-6 and abs(
+            self.coefficient_b * other.coefficient_c - self.coefficient_c * other.coefficient_b) < 1e-6
+
     def is_perpendicular(self, other: 'CwPlane3d') -> bool:
         """ Check if two planes are perpendicular.
 
@@ -68,8 +84,9 @@ class CwPlane3d:
         Returns:
             True if the planes are perpendicular, False otherwise
         """
-        return abs(self.a * other.a + self.b * other.b + self.c * other.c) < 1e-6
-    
+        return abs(
+            self.coefficient_a * other.coefficient_a + self.coefficient_b * other.coefficient_b + self.coefficient_c * other.coefficient_c) < 1e-6
+
     def is_coplanar(self, other: 'CwPlane3d') -> bool:
         """ Check if two planes are coplanar.
 
@@ -79,9 +96,11 @@ class CwPlane3d:
         Returns:
             True if the planes are coplanar, False otherwise
         """
-        return self.is_parallel(other) and self.is_perpendicular(other)
-    
-    def is_point_on_plane(self, point: 'CwVector3d') -> bool:
+        return self.coefficient_a / other.coefficient_a \
+                == self.coefficient_b / other.coefficient_b \
+                == self.coefficient_c / other.coefficient_c
+
+    def is_point_on_plane(self, point: 'cwvector3d.CwVector3d') -> bool:
         """ Check if a point is on the plane.
 
         Args:
@@ -90,10 +109,16 @@ class CwPlane3d:
         Returns:
             True if the point is on the plane, False otherwise
         """
-        return abs(self.a * point.x + self.b * point.y + self.c * point.z + self.d) < 1e-6
-    
-    def distance_to_point(self, point: 'CwVector3d') -> float:
+        return abs(
+            self.coefficient_a * point.x + self.coefficient_b * point.y + self.coefficient_c * point.z + self.constant_d) < 1e-6
+
+    def distance_to_point(self, point: 'cwvector3d.CwVector3d') -> float:
         """ Calculate the distance from a point to the plane.
+        The distance from a point to a plane is given by the formula:
+        |ax + by + cz + d| / sqrt(a^2 + b^2 + c^2)
+        where (a, b, c) is the normal vector of the plane,
+        (x, y, z) are the coordinates of the point, and
+        d is the constant term in the plane equation.
 
         Args:
             a point in 3D space
@@ -101,8 +126,10 @@ class CwPlane3d:
         Returns:
             distance from the point to the plane
         """
-        return abs(self.a * point.x + self.b * point.y + self.c * point.z + self.d) / sqrt(self.a**2 + self.b**2 + self.c**2)
-    
+        numerator = abs(self.coefficient_a * point.x + self.coefficient_b * point.y + self.coefficient_c * point.z + self.constant_d)
+        denominator = sqrt(self.coefficient_a**2 + self.coefficient_b**2 + self.coefficient_c**2)
+        return numerator / denominator
+
     def distance_to_plane(self, other: 'CwPlane3d') -> float:
         """ Calculate the distance from a plane to another plane.
 
@@ -112,16 +139,5 @@ class CwPlane3d:
         Returns:
             distance from the plane to the other plane
         """
-        return abs(self.d - other.d) / sqrt(self.a**2 + self.b**2 + self.c**2)
-    
-    def intersection(self, other: 'CwPlane3d') -> 'CwVector3d':
-        """ Calculate the intersection point of two planes.
-
-        Args:
-            another plane in 3D space
-
-        Returns:
-            intersection point of the two planes
-        """
-        return CwVector3d(self.b * other.c - self.c * other.b, self.c * other.a - self.a * other.c, self.a * other.b - self.b * other.a) / (self.a * other.b - self.b * other.a)
-    
+        return abs(self.constant_d - other.constant_d) / sqrt(
+            self.coefficient_a ** 2 + self.coefficient_b ** 2 + self.coefficient_c ** 2)
