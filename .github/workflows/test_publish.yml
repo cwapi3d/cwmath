@@ -2,8 +2,8 @@ name: Test Publish CwMath Package
 
 on:
   push:
-    branches:
-      - develop
+    branches-ignore:
+      - 'main'
 
 jobs:
   build-and-publish:
