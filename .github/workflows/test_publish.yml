@@ -4,14 +4,16 @@ on:
   push:
     branches:
       - develop
-    paths:
-      - 'src/**'
-      - 'setup.py'
 
 jobs:
   build-and-publish:
     name: Test Build and Publish
     runs-on: ubuntu-latest
+    environment:
+          name: testpypi
+          url: https://test.pypi.org/p/cwmath
+    permissions:
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -23,9 +25,8 @@ jobs:
       - run: pip install pip-tools
       - run: pip-sync
 
-      - run: python -m build --sdist --wheel --outdir dist/ .
+      - run: python -m build
+
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          user: __token__
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
