@@ -23,6 +23,7 @@ jobs:
 
 #      - run: python -m pip install --upgrade pip
 #      - run: pip install pip-tools
+      - run: pip install build
 #      - run: pip-sync
 
       - run: python -m build
