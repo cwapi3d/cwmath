@@ -7,7 +7,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='cwmath',
-    version='0.0.4',
+    version='0.0.5',
     author='Cadwork',
     author_email='it@cadwork.ca',
     description='Cadwork Math Utilities',
@@ -21,7 +21,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries',
     ],
     python_requires='>=3.9, <4',

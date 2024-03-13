@@ -40,6 +40,8 @@ nav:
     - Style Guide: style_guide.md
   - Reference:
     - functions.md
+    - vector3d.md
+    - plane3d.md
 
 markdown_extensions:
   - attr_list  

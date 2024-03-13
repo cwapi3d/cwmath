@@ -12,6 +12,14 @@ class CwVector3d:
 
     @classmethod
     def from_point_3d(cls, point_3d: 'cadwork.point_3d') -> 'CwVector3d':
+        """Create a CwVector3d from a cadwork.point_3d.
+
+        Args:
+            A cadwork.point_3d
+
+        Returns:
+            A CwVector3d object
+        """
         return cls(point_3d.x, point_3d.y, point_3d.z)
 
     @property
@@ -39,12 +47,30 @@ class CwVector3d:
         self._z = value
 
     def dot(self, other: 'CwVector3d') -> float:
+        """ Calculate the dot product of two vectors.
+
+        Args:
+            Another CwVector3d object
+
+        Returns:
+            float: dot product
+        """
         return self._x * other._x + self._y * other._y + self._z * other._z
     
     def magnitude(self) -> float:
+        """ Calculate the magnitude of the vector.
+
+        Returns:
+            Magnitude of the vector
+        """
         return (self._x**2 + self._y**2 + self._z**2)**0.5
     
     def normalize(self) -> 'CwVector3d':
+        """ Normalize the vector.
+
+        Returns:
+            A normalized vector
+        """
         return self / self.magnitude()
         
     def __add__(self, other: 'CwVector3d') -> 'CwVector3d':
