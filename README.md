@@ -1,3 +1,5 @@
+![Logo](https://filehost.cadwork.ca/cadwork_logo.png)
+
 # Cadwork Math Utilities
 
 [![PyPI](https://img.shields.io/pypi/v/cwmath)](https://pypi.python.org/pypi/cwmath/)

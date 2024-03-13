@@ -1,3 +1,7 @@
+build
 mkdocs
 mkdocs-material
-mkdocstrings[python-legacy]
+mkdocstrings[python]
+pytest
+pytest-cov
+twine

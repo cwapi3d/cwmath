@@ -95,38 +95,38 @@ class CwPlane3d:
             self._constant_d = value
 
     def is_parallel(self, other: 'CwPlane3d') -> bool:
-        """ Check if two planes are parallel.
+        """ Checks if two planes are parallel.
 
         Args:
-            Another plane in 3D space
+            other: 3d plane
 
         Returns:
-            True if the planes are parallel, False otherwise
+            if the planes are parallel
         """
         return abs(self._coefficient_a * other._coefficient_b - self._coefficient_b * other._coefficient_a) < 1e-6 and abs(
             self._coefficient_a * other._coefficient_c - self._coefficient_c * other._coefficient_a) < 1e-6 and abs(
             self._coefficient_b * other._coefficient_c - self._coefficient_c * other._coefficient_b) < 1e-6
 
     def is_perpendicular(self, other: 'CwPlane3d') -> bool:
-        """ Check if two planes are perpendicular.
+        """ Checks if two planes are perpendicular.
 
         Args:
-            Another plane in 3D space
+            other: 3d plane
 
         Returns:
-            True if the planes are perpendicular, False otherwise
+            if the planes are perpendicular
         """
         return abs(
             self._coefficient_a * other._coefficient_a + self._coefficient_b * other._coefficient_b + self._coefficient_c * other._coefficient_c) < 1e-6
 
     def is_coplanar(self, other: 'CwPlane3d') -> bool:
-        """ Check if two planes are coplanar.
+        """ Checks if two planes are coplanar.
 
         Args:
-            Another plane in 3D space
+            other: 3d plane
 
         Returns:
-            True if the planes are coplanar, False otherwise
+            if the planes are coplanar
         """
         if other._coefficient_a == 0:
             return self._coefficient_a == 0
@@ -140,19 +140,19 @@ class CwPlane3d:
                 == self._coefficient_c / other._coefficient_c
 
     def is_point_on_plane(self, point: 'cwvector3d.CwVector3d') -> bool:
-        """ Check if a point is on the plane.
+        """ Checks if a point is on the plane.
 
         Args:
-            a point in 3D space
+            point: point
 
         Returns:
-            True if the point is on the plane, False otherwise
+            if the point is on the plane
         """
         return abs(
             self._coefficient_a * point.x + self._coefficient_b * point.y + self._coefficient_c * point.z + self._constant_d) < 1e-6
 
     def distance_to_point(self, point: 'cwvector3d.CwVector3d') -> float:
-        """ Calculate the distance from a point to the plane.
+        """ Calculates the distance from a point to the plane.
         The distance from a point to a plane is given by the formula:
         |ax + by + cz + d| / sqrt(a^2 + b^2 + c^2)
         where (a, b, c) is the normal vector of the plane,
@@ -160,7 +160,7 @@ class CwPlane3d:
         d is the constant term in the plane equation.
 
         Args:
-            a point in 3D space
+            point: point
 
         Returns:
             distance from the point to the plane
@@ -170,13 +170,13 @@ class CwPlane3d:
         return numerator / denominator
 
     def distance_to_plane(self, other: 'CwPlane3d') -> float:
-        """ Calculate the distance from a plane to another plane.
+        """ Calculates the distance from a plane to another plane.
 
         Args:
-            another plane in 3D space
+            other: 3d plane
 
         Returns:
-            distance from the plane to the other plane
+            distance to plane
         """
         return abs(self._constant_d - other._constant_d) / sqrt(
             self._coefficient_a ** 2 + self._coefficient_b ** 2 + self._coefficient_c ** 2)
