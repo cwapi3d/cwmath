@@ -1,10 +1,10 @@
-![Logo](https://filehost.cadwork.ca/cadwork_logo.png)
-
 # Cadwork Math Utilities
+
+![Logo](https://filehost.cadwork.ca/cadwork_logo.png)
 
 [![PyPI](https://img.shields.io/pypi/v/cwmath)](https://pypi.python.org/pypi/cwmath/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cwmath)](https://pypi.python.org/pypi/cwmath/)
-[![RTD](https://img.shields.io/readthedocs/cwmath)](https://math.cadwork.dev)
+[![RTD](https://img.shields.io/readthedocs/cwmath)](https://docs.cadwork.com/projects/cwmath/en/latest/)
 [![Issues](https://img.shields.io/github/issues/cwapi3d/cwmath)](https://github.com/cwapi3d/cwmath/issues)
 [![Pulls](https://img.shields.io/github/issues-pr/cwapi3d/cwmath)](https://github.com/cwapi3d/cwmath/pulls)
 [![GitHub](https://img.shields.io/github/license/cwapi3d/cwmath)](https://choosealicense.com/licenses/mit/)
@@ -22,7 +22,7 @@ Install with pip:
 ## Contributing
 
 Contributions are always welcome!
-Before contributing, please check [contributing agreement](CONTRIBUTING.md).
+Before contributing, please check our [contributing agreement](CONTRIBUTING.md).
   
 ## Roadmap
 
@@ -51,16 +51,18 @@ import math
 import sys
 from myclass import MyClass
 
+
 # example function
-def add_one(number:int) -> int:
+def add_one(number: int) -> int:
     """Increase number by one.
+    
     Function written by John Doe.
 
     Args:
-        number (int): a number
+        number: a number
 
     Returns:
-        int: number increased by one
+        number increased by one
     """
     return number + 1
 
