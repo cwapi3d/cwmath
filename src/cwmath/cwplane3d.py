@@ -180,3 +180,11 @@ class CwPlane3d:
         """
         return abs(self._constant_d - other._constant_d) / sqrt(
             self._coefficient_a ** 2 + self._coefficient_b ** 2 + self._coefficient_c ** 2)
+
+    def get_normal(self) -> 'cwvector3d.CwVector3d':
+        """ Returns the normal vector of the plane.
+
+        Returns:
+            normal vector
+        """
+        return cwvector3d.CwVector3d(self._coefficient_a, self._coefficient_b, self._coefficient_c)
