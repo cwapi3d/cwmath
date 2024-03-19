@@ -9,6 +9,7 @@ class CwPlane3d:
     """Plane class for 3D planes. """
 
     def __init__(self, point_3d, normal_vector):
+        self._position = point_3d
         self._coefficient_a = normal_vector.x
         self._coefficient_b = normal_vector.y
         self._coefficient_c = normal_vector.z
@@ -188,3 +189,12 @@ class CwPlane3d:
             normal vector
         """
         return cwvector3d.CwVector3d(self._coefficient_a, self._coefficient_b, self._coefficient_c)
+
+    def get_position(self) -> 'cwvector3d.CwVector3d':
+        """ Returns the position of the plane.
+
+        Returns:
+            position
+        """
+        return self._position
+
