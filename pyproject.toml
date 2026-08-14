@@ -29,6 +29,9 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
     "black",
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings[python]",
     "pytest",
 ]
 
