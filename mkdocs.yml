@@ -3,7 +3,7 @@ site_name: Cadwork Math Utilities
 repo_name: cwapi3d/cwmath
 repo_url: https://github.com/cwapi3d/cwmath
 
-copyright: Copyright 2024 Cadwork
+copyright: Copyright 2026 Cadwork
 
 site_url: https://python.cadwork.dev/
 
@@ -11,7 +11,7 @@ theme:
   name: material
   logo: cw_logo.svg
   favicon: cw_logo.svg
-  version: V30
+  version: V2026
   palette:
     - scheme: default
       toggle:
@@ -75,6 +75,7 @@ extra_css:
 
 plugins:
   - search
+  - autorefs
   - mkdocstrings:
       handlers:
         python:
