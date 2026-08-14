@@ -32,9 +32,9 @@ class Point3:
     z: float
 
     def __post_init__(self) -> None:
-        object.__setattr__(self, "x", float(self.x))
-        object.__setattr__(self, "y", float(self.y))
-        object.__setattr__(self, "z", float(self.z))
+        object.__setattr__(self, 'x', float(self.x))
+        object.__setattr__(self, 'y', float(self.y))
+        object.__setattr__(self, 'z', float(self.z))
 
     @classmethod
     def from_xyz(cls, value: Xyz) -> Self:
@@ -69,12 +69,12 @@ class Point3:
 
     def distance(self, other: Point3) -> float:
         if not isinstance(other, Point3):
-            raise TypeError("distance expects a Point3")
+            raise TypeError('distance expects a Point3')
         return (other - self).magnitude()
 
     def lerp(self, other: Point3, t: float) -> Point3:
         if not isinstance(other, Point3):
-            raise TypeError("lerp expects a Point3")
+            raise TypeError('lerp expects a Point3')
         return self + (other - self) * t
 
     def __add__(self, other: object) -> Point3:
