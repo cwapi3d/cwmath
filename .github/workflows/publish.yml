@@ -2,35 +2,26 @@ name: Publish CwMath Package
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'src/**'
-      - 'setup.py'
+    tags:
+      - "v*"
 
 jobs:
   build-and-publish:
     name: Build and Publish
-    runs-on: ubuntu-20.04
-
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/cwmath
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - run: >-
-          python -m
-          pip install
-          build
-          --user
-      - run: >-
-          python -m
-          build
-          --sdist
-          --wheel
-          --outdir dist/
-          .
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+      - name: Install Python
+        run: uv python install 3.14
+      - name: Build
+        run: uv build
+      - name: Publish
+        run: uv publish
