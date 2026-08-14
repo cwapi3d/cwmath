@@ -1,30 +1,40 @@
 [project]
 name = "cwmath"
-version = "0.0.9"
+version = "1.0.0"
 authors = [{ name = "Cadwork", email = "it@cadwork.ca" }]
-requires-python = ">= 3.10"
-description = 'Cadwork Math Utilities'
+requires-python = ">=3.14"
+description = "Cadwork Math Utilities"
 readme = "README.md"
 license = { file = "LICENSE" }
 keywords = ["cadwork"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Plugins",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries",
 ]
+dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/cwapi3d/cwmath"
 
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.setuptools]
-packages = ["cwmath"]
-package-dir = { "" = "src" }
+[dependency-groups]
+dev = [
+    "black",
+    "pytest",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py314"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
