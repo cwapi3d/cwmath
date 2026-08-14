@@ -5,7 +5,7 @@ from cwmath.tolerance import ABS_TOL, REL_TOL, is_close
 
 
 def test_package_imports() -> None:
-    assert cwmath.__name__ == "cwmath"
+    assert cwmath.__name__ == 'cwmath'
 
 
 def test_default_tolerances() -> None:

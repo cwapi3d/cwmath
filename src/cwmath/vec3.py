@@ -22,9 +22,9 @@ class Vec3:
     z: float
 
     def __post_init__(self) -> None:
-        object.__setattr__(self, "x", float(self.x))
-        object.__setattr__(self, "y", float(self.y))
-        object.__setattr__(self, "z", float(self.z))
+        object.__setattr__(self, 'x', float(self.x))
+        object.__setattr__(self, 'y', float(self.y))
+        object.__setattr__(self, 'z', float(self.z))
 
     @classmethod
     def zero(cls) -> Self:
@@ -63,12 +63,12 @@ class Vec3:
 
     def dot(self, other: Vec3) -> float:
         if not isinstance(other, Vec3):
-            raise TypeError("dot expects a Vec3")
+            raise TypeError('dot expects a Vec3')
         return self.x * other.x + self.y * other.y + self.z * other.z
 
     def cross(self, other: Vec3) -> Vec3:
         if not isinstance(other, Vec3):
-            raise TypeError("cross expects a Vec3")
+            raise TypeError('cross expects a Vec3')
         return Vec3(
             self.y * other.z - self.z * other.y,
             self.z * other.x - self.x * other.z,
@@ -81,12 +81,12 @@ class Vec3:
     def normalized(self) -> Vec3:
         mag = self.magnitude()
         if mag == 0.0:
-            raise ValueError("cannot normalize a zero vector")
+            raise ValueError('cannot normalize a zero vector')
         return self / mag
 
     def angle_to(self, other: Vec3) -> float:
         if not isinstance(other, Vec3):
-            raise TypeError("angle_to expects a Vec3")
+            raise TypeError('angle_to expects a Vec3')
         cosine = self.normalized().dot(other.normalized())
         return math.acos(max(-1.0, min(1.0, cosine)))
 

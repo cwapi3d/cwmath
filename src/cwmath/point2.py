@@ -28,8 +28,8 @@ class Point2:
     y: float
 
     def __post_init__(self) -> None:
-        object.__setattr__(self, "x", float(self.x))
-        object.__setattr__(self, "y", float(self.y))
+        object.__setattr__(self, 'x', float(self.x))
+        object.__setattr__(self, 'y', float(self.y))
 
     @classmethod
     def from_xy(cls, value: Xy) -> Self:
@@ -47,9 +47,9 @@ class Point2:
     ) -> bool:
         if not isinstance(other, Point2):
             return False
-        return close_scalars(
-            self.x, other.x, abs_tol=abs_tol, rel_tol=rel_tol
-        ) and close_scalars(self.y, other.y, abs_tol=abs_tol, rel_tol=rel_tol)
+        return close_scalars(self.x, other.x, abs_tol=abs_tol, rel_tol=rel_tol) and close_scalars(
+            self.y, other.y, abs_tol=abs_tol, rel_tol=rel_tol
+        )
 
     def with_x(self, x: float) -> Point2:
         return Point2(x, self.y)
@@ -59,12 +59,12 @@ class Point2:
 
     def distance(self, other: Point2) -> float:
         if not isinstance(other, Point2):
-            raise TypeError("distance expects a Point2")
+            raise TypeError('distance expects a Point2')
         return (other - self).magnitude()
 
     def lerp(self, other: Point2, t: float) -> Point2:
         if not isinstance(other, Point2):
-            raise TypeError("lerp expects a Point2")
+            raise TypeError('lerp expects a Point2')
         return self + (other - self) * t
 
     def __add__(self, other: object) -> Point2:

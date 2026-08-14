@@ -33,7 +33,7 @@ def test_to_point_3d_with_factory_vec3() -> None:
 def test_to_point_3d_not_available_without_host(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    monkeypatch.setitem(sys.modules, "cadwork", None)
+    monkeypatch.setitem(sys.modules, 'cadwork', None)
     with pytest.raises(CadworkNotAvailableError):
         to_point_3d(Point3(1, 2, 3))
 

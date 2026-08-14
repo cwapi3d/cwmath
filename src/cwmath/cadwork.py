@@ -29,14 +29,13 @@ def to_point_3d(
     is imported only at this call site.
     """
     if not isinstance(value, (Point3, Vec3)):
-        raise TypeError("to_point_3d expects a Point3 or Vec3")
+        raise TypeError('to_point_3d expects a Point3 or Vec3')
     if factory is None:
         try:
             import cadwork as host
         except ImportError as exc:
             raise CadworkNotAvailableError(
-                "cadwork is not available; pass factory= to construct "
-                "a point_3d outside the cadwork host"
+                'cadwork is not available; pass factory= to construct a point_3d outside the cadwork host'
             ) from exc
         factory = host
     return factory.point_3d(value.x, value.y, value.z)

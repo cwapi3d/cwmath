@@ -21,8 +21,8 @@ class Vec2:
     y: float
 
     def __post_init__(self) -> None:
-        object.__setattr__(self, "x", float(self.x))
-        object.__setattr__(self, "y", float(self.y))
+        object.__setattr__(self, 'x', float(self.x))
+        object.__setattr__(self, 'y', float(self.y))
 
     @classmethod
     def zero(cls) -> Self:
@@ -44,9 +44,9 @@ class Vec2:
     ) -> bool:
         if not isinstance(other, Vec2):
             return False
-        return close_scalars(
-            self.x, other.x, abs_tol=abs_tol, rel_tol=rel_tol
-        ) and close_scalars(self.y, other.y, abs_tol=abs_tol, rel_tol=rel_tol)
+        return close_scalars(self.x, other.x, abs_tol=abs_tol, rel_tol=rel_tol) and close_scalars(
+            self.y, other.y, abs_tol=abs_tol, rel_tol=rel_tol
+        )
 
     def with_x(self, x: float) -> Vec2:
         return Vec2(x, self.y)
@@ -56,13 +56,13 @@ class Vec2:
 
     def dot(self, other: Vec2) -> float:
         if not isinstance(other, Vec2):
-            raise TypeError("dot expects a Vec2")
+            raise TypeError('dot expects a Vec2')
         return self.x * other.x + self.y * other.y
 
     def cross(self, other: Vec2) -> float:
         """Signed parallelogram area of ``self`` × ``other``."""
         if not isinstance(other, Vec2):
-            raise TypeError("cross expects a Vec2")
+            raise TypeError('cross expects a Vec2')
         return self.x * other.y - self.y * other.x
 
     def magnitude(self) -> float:
@@ -71,12 +71,12 @@ class Vec2:
     def normalized(self) -> Vec2:
         mag = self.magnitude()
         if mag == 0.0:
-            raise ValueError("cannot normalize a zero vector")
+            raise ValueError('cannot normalize a zero vector')
         return self / mag
 
     def angle_to(self, other: Vec2) -> float:
         if not isinstance(other, Vec2):
-            raise TypeError("angle_to expects a Vec2")
+            raise TypeError('angle_to expects a Vec2')
         cosine = self.normalized().dot(other.normalized())
         return math.acos(max(-1.0, min(1.0, cosine)))
 

@@ -5,22 +5,22 @@ import importlib.metadata
 import cwmath
 
 EXPECTED_EXPORTS = {
-    "ABS_TOL",
-    "REL_TOL",
-    "Frame3",
-    "Line3",
-    "Plane3",
-    "Point2",
-    "Point3",
-    "Vec2",
-    "Vec3",
-    "is_close",
-    "project_point_on_line",
-    "project_point_on_plane",
-    "to_point_3d",
+    'ABS_TOL',
+    'REL_TOL',
+    'Frame3',
+    'Line3',
+    'Plane3',
+    'Point2',
+    'Point3',
+    'Vec2',
+    'Vec3',
+    'is_close',
+    'project_point_on_line',
+    'project_point_on_plane',
+    'to_point_3d',
 }
 
-LEGACY_NAMES = ("CwVector3d", "CwPlane3d", "cwexamples")
+LEGACY_NAMES = ('CwVector3d', 'CwPlane3d', 'cwexamples')
 
 
 def test_top_level_import_list() -> None:
@@ -60,4 +60,4 @@ def test_no_legacy_names_or_version() -> None:
     for name in LEGACY_NAMES:
         assert not hasattr(cwmath, name)
         assert name not in cwmath.__all__
-    assert importlib.metadata.version("cwmath") == "1.0.0"
+    assert importlib.metadata.version('cwmath') == '1.0.1'

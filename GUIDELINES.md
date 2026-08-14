@@ -5,17 +5,17 @@
 * use meaningful and appropriate naming
 
 
-Please follow the style guide below when adding functionalities. 
+Please follow the style guide below when adding functionalities.
 
 ```python
-
 # imports
 import math
 import sys
 from myclass import MyClass
 
+
 # example function
-def add_one(number:int) -> int:
+def add_one(number: int) -> int:
     """Increase number by one.
     Author: John Doe
 
@@ -32,15 +32,12 @@ def add_one(number:int) -> int:
 
 
 # Aligned with opening delimiter.
-foo = long_function_name(var_one, var_two,
-                         var_three, var_four)
+foo = long_function_name(var_one, var_two, var_three, var_four)
 
 if foo == 'blah':
     do_blah_thing()
-    
+
 do_one()
 do_two()
 do_three()
-
 ```
-

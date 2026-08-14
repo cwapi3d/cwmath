@@ -1,13 +1,12 @@
-name: Publish CwMath Package
+name: Publish cwapi3d Package
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - "main"
 
 jobs:
   build-and-publish:
-    name: Build and Publish
     runs-on: ubuntu-latest
     environment:
       name: pypi
@@ -16,12 +15,19 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - name: Install uv
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dorny/paths-filter@vceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'src/**'
+              - 'pyproject.toml'
+      - if: steps.changes.outputs.src == 'true'
         uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
-      - name: Install Python
+      - if: steps.changes.outputs.src == 'true'
         run: uv python install 3.14
-      - name: Build
+      - if: steps.changes.outputs.src == 'true'
         run: uv build
-      - name: Publish
-        run: uv publish
+      - if: steps.changes.outputs.src == 'true'
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
