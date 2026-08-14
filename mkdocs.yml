@@ -35,9 +35,14 @@ nav:
       - Contributing: contributing.md
       - Style Guide: style_guide.md
   - Reference:
-      - functions.md
-      - vector3d.md
-      - plane3d.md
+      - Point3: point3.md
+      - Vec3: vec3.md
+      - Point2: point2.md
+      - Vec2: vec2.md
+      - Frame3: frame3.md
+      - Plane3: plane3.md
+      - Line3: line3.md
+      - Functions: functions.md
 
 markdown_extensions:
   - admonition
@@ -70,7 +75,13 @@ extra_css:
 
 plugins:
   - search
-  - mkdocstrings
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: true
+            show_root_heading: true
 
 extra:
   social:
