@@ -1,13 +1,16 @@
 version: 2
 
 build:
-  os: ubuntu-20.04
+  os: ubuntu-lts-latest
   tools:
-    python: "3.9"
+    python: "3.14"
 
 mkdocs:
   configuration: mkdocs.yml
 
 python:
-   install:
-   - requirements: docs/requirements.txt
+  install:
+    - method: uv
+      command: sync
+      groups:
+        - dev

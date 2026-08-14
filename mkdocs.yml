@@ -2,83 +2,89 @@ site_name: Cadwork Math Utilities
 
 repo_name: cwapi3d/cwmath
 repo_url: https://github.com/cwapi3d/cwmath
-edit_uri: ""
 
-copyright: Copyright &copy; 2022 Cadwork
+copyright: Copyright 2024 Cadwork
 
 site_url: https://python.cadwork.dev/
 
 theme:
-    name: material
-    logo: cw_logo.svg 
-    favicon: cw_logo.svg 
-    version: V29
-    palette:
+  name: material
+  logo: cw_logo.svg
+  favicon: cw_logo.svg
+  version: V30
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
     - scheme: slate
-      primary: "light-blue"
-      accent: "pink"
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-    - scheme: default
-      primary: "light-blue"
-      accent: "pink"
-      toggle:
-        icon: material/brightness-7 
-        name: Switch to dark mode
-    features:
+  features:
     - search.suggest
     - search.highlight
     - navigation.tabs
+    - content.code.copy
     - toc.integrate
 
 nav:
   - Home: index.md
   - Getting Started:
-    - Geometry: geometry.md
-    - Contributing: contributing.md
-    - Style Guide: style_guide.md
+      - Geometry: geometry.md
+      - Contributing: contributing.md
+      - Style Guide: style_guide.md
   - Reference:
-    - functions.md
+      - Point3: point3.md
+      - Vec3: vec3.md
+      - Point2: point2.md
+      - Vec2: vec2.md
+      - Frame3: frame3.md
+      - Plane3: plane3.md
+      - Line3: line3.md
+      - Functions: functions.md
 
 markdown_extensions:
-  - attr_list  
   - admonition
-  - pymdownx.inlinehilite
-  - pymdownx.keys
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.gemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_alt
   - pymdownx.highlight:
       linenums: true
-      linenums_style: pymdownx-inline
+  - pymdownx.keys
   - pymdownx.superfences:
-  - footnotes:
-      SEPARATOR: _footnote_
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: cwapi3d
-      repo: cwmath
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - js/tablesort.js
+  - js/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
 extra_css:
-  - stylesheets/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
 plugins:
-  - search:
-      separator: '[\s\-\.\_]+'
+  - search
   - mkdocstrings:
       handlers:
         python:
           paths: [src]
           options:
-            show_source: false
-          setup_commands:
-            - import sys
-            - from unittest.mock import MagicMock as mock
-            - sys.modules["cadwork"] = mock()
+            show_source: true
+            show_root_heading: true
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/cwapi3d/cwmath
-      name: cwmath
+      link: https://github.com/cwapi3d
+      name: cwapi3d
