@@ -1,7 +1,0 @@
-build
-mkdocs
-mkdocs-material[imaging]
-mkdocstrings[python]
-pygments
-pytest
-pytest-cov
