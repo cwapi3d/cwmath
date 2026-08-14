@@ -60,4 +60,4 @@ def test_no_legacy_names_or_version() -> None:
     for name in LEGACY_NAMES:
         assert not hasattr(cwmath, name)
         assert name not in cwmath.__all__
-    assert importlib.metadata.version('cwmath') == '1.0.1'
+    assert importlib.metadata.version('cwmath') == '1.0.2'
