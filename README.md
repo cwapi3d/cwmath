@@ -8,6 +8,7 @@
 [![Issues](https://img.shields.io/github/issues/cwapi3d/cwmath)](https://github.com/cwapi3d/cwmath/issues)
 [![Pulls](https://img.shields.io/github/issues-pr/cwapi3d/cwmath)](https://github.com/cwapi3d/cwmath/pulls)
 [![GitHub](https://img.shields.io/github/license/cwapi3d/cwmath)](https://choosealicense.com/licenses/mit/)
+[![codecov](https://codecov.io/gh/cwapi3d/cwmath/graph/badge.svg?token=UU9QLGLMEQ)](https://codecov.io/gh/cwapi3d/cwmath)
 
 Dependency-free geometry types for cadwork plugin authors. Frozen `Point` / `Vec`
 pairs in 2D and 3D, a right-handed `Frame3`, `Plane3`, `Line3`, and projections.
